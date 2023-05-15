@@ -1,0 +1,267 @@
+-------------------- 10^9 - 256 --------------------
+Tamanho do vetor: 1000000000
+Numero de threads: 256
+Tamanho subVs: 3906250
+
+Tempo multithreads: 2.577699
+Soma multithreads: -10843
+Tempo uma thread: 1.724620
+Soma uma thread: -10843
+
+-------------------- 10^9 - 128 --------------------
+Tamanho do vetor: 1000000000
+Numero de threads: 128
+Tamanho subVs: 7812500
+
+Tempo multithreads: 2.864674
+Soma multithreads: -2145536
+Tempo uma thread: 1.748236
+Soma uma thread: -2145536
+
+-------------------- 10^9 - 64 ---------------------
+Tamanho do vetor: 1000000000
+Numero de threads: 64
+Tamanho subVs: 15625000
+
+Tempo multithreads: 2.739809
+Soma multithreads: 356960
+Tempo uma thread: 1.737783
+Soma uma thread: 356960
+
+-------------------- 10^9 - 32 ---------------------
+Tamanho do vetor: 1000000000
+Numero de threads: 32
+Tamanho subVs: 31250000
+
+Tempo multithreads: 2.888725
+Soma multithreads: 1332900
+Tempo uma thread: 1.722336
+Soma uma thread: 1332900
+
+-------------------- 10^9 - 16 ---------------------
+Tamanho do vetor: 1000000000
+Numero de threads: 16
+Tamanho subVs: 62500000
+
+Tempo multithreads: 2.919837
+Soma multithreads: 729591
+Tempo uma thread: 1.725507
+Soma uma thread: 729591
+
+-------------------- 10^9 - 8 ----------------------
+Tamanho do vetor: 1000000000
+Numero de threads: 8
+Tamanho subVs: 125000000
+
+Tempo multithreads: 2.975209
+Soma multithreads: 275002
+Tempo uma thread: 1.728852
+Soma uma thread: 275002
+
+-------------------- 10^9 - 4 ----------------------
+Tamanho do vetor: 1000000000
+Numero de threads: 4
+Tamanho subVs: 250000000
+
+Tempo multithreads: 2.285612
+Soma multithreads: 1236808
+Tempo uma thread: 1.721078
+Soma uma thread: 1236808
+
+-------------------- 10^9 - 2 ----------------------
+Tamanho do vetor: 1000000000
+Numero de threads: 2
+Tamanho subVs: 500000000
+
+Tempo multithreads: 1.794578
+Soma multithreads: 14657
+Tempo uma thread: 1.727364
+Soma uma thread: 14657
+
+-------------------- 10^9 - 1 ----------------------
+Tamanho do vetor: 1000000000
+Numero de threads: 1
+Tamanho subVs: 1000000000
+
+Tempo multithreads: 1.713952
+Soma multithreads: -1410038
+Tempo uma thread: 1.721490
+Soma uma thread: -1410038
+
+
+-------------------- 10^8 - 256 --------------------
+Tamanho do vetor: 100000000
+Numero de threads: 256
+Tamanho subVs: 390625
+
+Tempo multithreads: 0.132815
+Soma multithreads: 1038136
+Tempo uma thread: 0.166026
+Soma uma thread: 1038136
+-------------------- 10^8 - 128 --------------------
+Tamanho do vetor: 100000000
+Numero de threads: 128
+Tamanho subVs: 781250
+
+Tempo multithreads: 0.051745
+Soma multithreads: 156813
+Tempo uma thread: 0.163747
+Soma uma thread: 156813
+-------------------- 10^8 - 64 ---------------------
+Tamanho do vetor: 100000000
+Numero de threads: 64
+Tamanho subVs: 1562500
+
+Tempo multithreads: 0.065174
+Soma multithreads: -406413
+Tempo uma thread: 0.166665
+Soma uma thread: -406413
+-------------------- 10^8 - 32 ---------------------
+Tamanho do vetor: 100000000
+Numero de threads: 32
+Tamanho subVs: 3125000
+
+Tempo multithreads: 0.109937
+Soma multithreads: 989099
+Tempo uma thread: 0.172670
+Soma uma thread: 989099
+-------------------- 10^8 - 16 ---------------------
+Tamanho do vetor: 100000000
+Numero de threads: 16
+Tamanho subVs: 6250000
+
+Tempo multithreads: 0.192466
+Soma multithreads: -389861
+Tempo uma thread: 0.161829
+Soma uma thread: -389861
+
+-------------------- 10^8 - 8 ----------------------
+Tamanho do vetor: 100000000
+Numero de threads: 8
+Tamanho subVs: 12500000
+
+Tempo multithreads: 0.224477
+Soma multithreads: -263045
+Tempo uma thread: 0.170616
+Soma uma thread: -263045
+
+-------------------- 10^8 - 4 ----------------------
+Tamanho do vetor: 100000000
+Numero de threads: 4
+Tamanho subVs: 25000000
+
+Tempo multithreads: 0.224245
+Soma multithreads: 719943
+Tempo uma thread: 0.164417
+Soma uma thread: 719943
+
+-------------------- 10^8 - 2 ----------------------
+Tamanho do vetor: 100000000
+Numero de threads: 2
+Tamanho subVs: 50000000
+
+Tempo multithreads: 0.171999
+Soma multithreads: 512784
+Tempo uma thread: 0.169136
+Soma uma thread: 512784
+
+-------------------- 10^8 - 1 ----------------------
+Tamanho do vetor: 100000000
+Numero de threads: 1
+Tamanho subVs: 100000000
+
+Tempo multithreads: 0.170868
+Soma multithreads: -91516
+Tempo uma thread: 0.169655
+Soma uma thread: -91516
+
+
+-------------------- 10^7 - 256 --------------------
+Tamanho do vetor: 10000000
+Numero de threads: 256
+Tamanho subVs: 39062
+
+Tempo multithreads: 0.014516
+Soma multithreads: 143033
+Tempo uma thread: 0.011260
+Soma uma thread: 143033
+
+-------------------- 10^7 - 128 --------------------
+Tamanho do vetor: 10000000
+Numero de threads: 128
+Tamanho subVs: 78125
+
+Tempo multithreads: 0.010213
+Soma multithreads: 138864
+Tempo uma thread: 0.015555
+Soma uma thread: 138864
+
+-------------------- 10^7 - 64 ---------------------
+Tamanho do vetor: 10000000
+Numero de threads: 64
+Tamanho subVs: 156250
+
+Tempo multithreads: 0.009627
+Soma multithreads: -284690
+Tempo uma thread: 0.017235
+Soma uma thread: -284690
+
+-------------------- 10^7 - 32 ---------------------
+Tamanho do vetor: 10000000
+Numero de threads: 32
+Tamanho subVs: 312500
+
+Tempo multithreads: 0.010774
+Soma multithreads: 115016
+Tempo uma thread: 0.016935
+Soma uma thread: 115016
+
+-------------------- 10^7 - 16 ---------------------
+Tamanho do vetor: 10000000
+Numero de threads: 16
+Tamanho subVs: 625000
+
+Tempo multithreads: 0.014853
+Soma multithreads: 20156
+Tempo uma thread: 0.011855
+Soma uma thread: 20156
+
+-------------------- 10^7 - 8 ----------------------
+Tamanho do vetor: 10000000
+Numero de threads: 8
+Tamanho subVs: 1250000
+
+Tempo multithreads: 0.018975
+Soma multithreads: 48623
+Tempo uma thread: 0.013671
+Soma uma thread: 48623
+
+-------------------- 10^7 - 4 ----------------------
+Tamanho do vetor: 10000000
+Numero de threads: 4
+Tamanho subVs: 2500000
+
+Tempo multithreads: 0.019403
+Soma multithreads: 436560
+Tempo uma thread: 0.009576
+Soma uma thread: 436560
+
+-------------------- 10^7 - 2 ----------------------
+Tamanho do vetor: 10000000
+Numero de threads: 2
+Tamanho subVs: 5000000
+
+Tempo multithreads: 0.010088
+Soma multithreads: -156842
+Tempo uma thread: 0.015970
+Soma uma thread: -156842
+
+-------------------- 10^7 - 1 ----------------------
+Tamanho do vetor: 10000000
+Numero de threads: 1
+Tamanho subVs: 10000000
+
+Tempo multithreads: 0.015823
+Soma multithreads: -218066
+Tempo uma thread: 0.008362
+Soma uma thread: -218066
