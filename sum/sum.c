@@ -16,17 +16,19 @@ void release() {
 
 int sum = 0;
 
-struct argsStruct {
-    char *argsv;
+// Estrutura para os argumentos das threads
+struct ArgsStruct {
+    char *vector;
     int initialIndex;
     int finalIndex;
 };
 
-void *sumV(void *arguments){
-    struct argsStruct *args = arguments;
+// Função executada pelas threads para calcular a soma do vetor
+void *sumVector(void *arguments){
+    struct ArgsStruct *args = arguments;
     int temp = 0;
     for (int j = args->initialIndex; j <= args->finalIndex; j++) {
-        temp += (int)args->argsv[j];
+        temp += (int)args->vector[j];
     }
     acquire();
     sum += temp;
@@ -44,61 +46,69 @@ int resetSum() {
 
 int main(void) {
     pthread_spin_init(&lock, PTHREAD_PROCESS_PRIVATE);
-    int N;
+    int vectorSize;
     printf("Tamanho do vetor: ");
-    scanf("%d", &N);
-    int K;
+    scanf("%d", &vectorSize);
+    int numThreads;
     printf("Numero de threads: ");
-    scanf("%d", &K);
+    scanf("%d", &numThreads);
 
-	pthread_t threadsSum[K];
-    char *v = malloc(N * 1);
-    int subArrLen = N/K;
-    printf("Tamanho subVs: %d\n", subArrLen);
-    struct argsStruct arrArgs[K];
+    pthread_t threadsSum[numThreads];
+    char *vector = malloc(vectorSize * sizeof(char));
+    int subVectorLength = vectorSize / numThreads;
+    printf("Tamanho do subvetor: %d\n", subVectorLength);
+    struct ArgsStruct threadArgs[numThreads];
 
     srand((unsigned) time(NULL));
-    for (int i = 0; i < N; i++) {
-        v[i] = (char)(rand() % 101) * pow((-1),(rand() % 2));
-        // printf("%d ", (int)v[i]);
+    for (int i = 0; i < vectorSize; i++) {
+        vector[i] = (char)(rand() % 101) * pow((-1),(rand() % 2));
+        // printf("%d ", (int)vector[i]);
     }
     printf("\n");
 
-    for (int i = 0; i < K; i++) {
-        int initialIndex = subArrLen * i;
-        int finalIndex = initialIndex + subArrLen - 1;
-        finalIndex = i == (K-1) ? (N-1) : finalIndex;
-        arrArgs[i].argsv = v;
-        arrArgs[i].initialIndex = initialIndex;
-        arrArgs[i].finalIndex = finalIndex;
+    // Divisão do vetor em subvetores para cada thread
+    for (int i = 0; i < numThreads; i++) {
+        int initialIndex = subVectorLength * i;
+        int finalIndex = initialIndex + subVectorLength - 1;
+        finalIndex = i == (numThreads-1) ? (vectorSize-1) : finalIndex;
+        threadArgs[i].vector = vector;
+        threadArgs[i].initialIndex = initialIndex;
+        threadArgs[i].finalIndex = finalIndex;
     }
 
     clock_t t = clock();
-	for (int i = 0; i < K; i++) {
-        pthread_create(&threadsSum[i], NULL, &sumV, (void *)&arrArgs[i]);
+
+    // Criação das threads para calcular a soma do vetor em paralelo
+    for (int i = 0; i < numThreads; i++) {
+        pthread_create(&threadsSum[i], NULL, &sumVector, (void *)&threadArgs[i]);
     }
-    for (int i = 0 ; i < K ; i++) {
+
+    // Espera todas as threads terminarem
+    for (int i = 0; i < numThreads; i++) {
         pthread_join(threadsSum[i], NULL);
     }
+
     double t_threads = (double)(clock() - t) / CLOCKS_PER_SEC;
 
-    printf("Tempo multithreads: %f\n", t_threads);
+    printf("Tempo com threads: %f\n", t_threads);
     int sumThreads = resetSum();
-    printf("Soma multithreads: %d\n", sumThreads);
+    printf("Soma com threads: %d\n", sumThreads);
 
     pthread_t totalSum;
-    struct argsStruct args;
-    args.argsv = v;
+    struct ArgsStruct args;
+    args.vector = vector;
     args.initialIndex = 0;
-    args.finalIndex = (N-1);
+    args.finalIndex = (vectorSize - 1);
     t = clock();
-    pthread_create(&totalSum, NULL, &sumV, (void *)&args);
+
+        // Criação da thread para calcular a soma do vetor usando uma única thread
+    pthread_create(&totalSum, NULL, &sumVector, (void *)&args);
     pthread_join(totalSum, NULL);
     double t_total = (double)(clock() - t) / CLOCKS_PER_SEC;
 
-    printf("Tempo uma thread: %f\n", t_total);
+    printf("Tempo com uma thread: %f\n", t_total);
     int sumTotal = resetSum();
-    printf("Soma uma thread: %d\n", sumTotal);
+    printf("Soma com uma thread: %d\n", sumTotal);
 
-	return 0;
+    return 0;
 }
