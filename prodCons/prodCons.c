@@ -3,6 +3,7 @@
 #include <time.h>
 #include <semaphore.h>
 #include <pthread.h>
+#include <math.h>
 
 #define MAX 100000
 
@@ -30,12 +31,20 @@ struct cancelStruct {
 
 
 int isPrime(int num) {
-    if (num <= 1) return 0;
+    if (num <= 1)
+        return 0;
  
-    for (int i = 2; i < num; i++) {
-        if (num % i == 0) return 0;
+    if (num <= 3)
+        return 1;
+ 
+    if (num % 2 == 0 || num % 3 == 0)
+        return 0;
+ 
+    int sqrtNum = sqrt(num);
+    for (int i = 5; i <= sqrtNum; i += 6) {
+        if (num % i == 0 || num % (i + 2) == 0)
+            return 0;
     }
-
     return 1;
 }
 

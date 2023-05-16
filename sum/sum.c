@@ -24,11 +24,11 @@ struct ArgsStruct {
 };
 
 // Função executada pelas threads para calcular a soma do vetor
-void *sumVector(void *arguments){
+void *sumVector(void *arguments) {
     struct ArgsStruct *args = arguments;
     int temp = 0;
     for (int j = args->initialIndex; j <= args->finalIndex; j++) {
-        temp += (int)args->vector[j];
+        temp += (int) args->vector[j];
     }
     acquire();
     sum += temp;
@@ -54,15 +54,14 @@ int main(void) {
     scanf("%d", &numThreads);
 
     pthread_t threadsSum[numThreads];
-    char *vector = malloc(vectorSize * sizeof(char));
+    char *vector = calloc(vectorSize, sizeof(char)); // Usando calloc para inicializar com zeros
     int subVectorLength = vectorSize / numThreads;
     printf("Tamanho do subvetor: %d\n", subVectorLength);
     struct ArgsStruct threadArgs[numThreads];
 
     srand((unsigned) time(NULL));
     for (int i = 0; i < vectorSize; i++) {
-        vector[i] = (char)(rand() % 101) * pow((-1),(rand() % 2));
-        // printf("%d ", (int)vector[i]);
+        vector[i] = (char) (rand() % 201 - 100); // Gera números entre -100 e 100
     }
     printf("\n");
 
@@ -70,7 +69,7 @@ int main(void) {
     for (int i = 0; i < numThreads; i++) {
         int initialIndex = subVectorLength * i;
         int finalIndex = initialIndex + subVectorLength - 1;
-        finalIndex = i == (numThreads-1) ? (vectorSize-1) : finalIndex;
+        finalIndex = i == (numThreads - 1) ? (vectorSize - 1) : finalIndex;
         threadArgs[i].vector = vector;
         threadArgs[i].initialIndex = initialIndex;
         threadArgs[i].finalIndex = finalIndex;
@@ -80,7 +79,7 @@ int main(void) {
 
     // Criação das threads para calcular a soma do vetor em paralelo
     for (int i = 0; i < numThreads; i++) {
-        pthread_create(&threadsSum[i], NULL, &sumVector, (void *)&threadArgs[i]);
+        pthread_create(&threadsSum[i], NULL, &sumVector, (void *) &threadArgs[i]);
     }
 
     // Espera todas as threads terminarem
@@ -88,11 +87,11 @@ int main(void) {
         pthread_join(threadsSum[i], NULL);
     }
 
-    double t_threads = (double)(clock() - t) / CLOCKS_PER_SEC;
+    double t_threads = (double) (clock() - t) / CLOCKS_PER_SEC;
 
-    printf("Tempo com threads: %f\n", t_threads);
+    printf("Tempo com várias threads: %f\n", t_threads); 
     int sumThreads = resetSum();
-    printf("Soma com threads: %d\n", sumThreads);
+    printf("Soma total com várias threads: %d\n", sumThreads);
 
     pthread_t totalSum;
     struct ArgsStruct args;
@@ -101,14 +100,16 @@ int main(void) {
     args.finalIndex = (vectorSize - 1);
     t = clock();
 
-        // Criação da thread para calcular a soma do vetor usando uma única thread
-    pthread_create(&totalSum, NULL, &sumVector, (void *)&args);
+    // Criação da thread para calcular a soma do vetor usando uma única thread
+    pthread_create(&totalSum, NULL, &sumVector, (void *) &args);
     pthread_join(totalSum, NULL);
-    double t_total = (double)(clock() - t) / CLOCKS_PER_SEC;
+    double t_total = (double) (clock() - t) / CLOCKS_PER_SEC;
 
-    printf("Tempo com uma thread: %f\n", t_total);
+    printf("Tempo com uma única thread: %f\n", t_total);
     int sumTotal = resetSum();
-    printf("Soma com uma thread: %d\n", sumTotal);
+    printf("Soma total com uma única thread: %d\n", sumTotal);
+
+    free(vector); // Liberando a memória alocada
 
     return 0;
 }
