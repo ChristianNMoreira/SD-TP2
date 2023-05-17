@@ -11,7 +11,7 @@ TARGET = prodCons
 all: $(TARGET)
 
 $(TARGET): $(TARGET).c
-	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c $(LDFLAGS) -lm
 
-clean:
+clean: 
 	$(RM) $(TARGET)
